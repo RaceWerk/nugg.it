@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>nugg.it</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Bootstrap CSS -->
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+	</head>
+	
+	<body>
+		<div class="container">
+			<div class="jumbotron">
+				<h1>
+					NUGG.IT
+				</h1>
+			</div>
+		</div>
+		
+		<div class="container">
+			<p style="text-align: center">
+				Please enter the dollar amount you wish to convert to nuggets
+			</p>
+			<P style="text-align: center">
+				$<input id="Dollars" type="number" step="0.01" min="0.01">
+			</p>
+			<img id="Nugget Button" onclick="CalculateNuggets()" src="images/bouncing nugget.gif" class="img-responsive center-block">
+			
+			<h2 id="NuggetOutput" style="text-align: center"></h2><!-- Blank output area -->
+			
+			<script>
+				function CalculateNuggets() {
+					var Dollars, Output;
+
+					// Get the value of the input field with id="numb"
+					Dollars = document.getElementById("Dollars").value;
+
+					// If x is Not a Number or less than one or greater than 10
+					if (isNaN(Dollars)) {
+						Output = "WTF? I can't convert words stupid.";
+					} 
+					else if (Dollars < 1.5) {
+						Output = "That won't get you any Nuggets :(";
+					}
+					else {
+						var Nuggets = Math.floor(Dollars / 1.5);
+						var Extra = Dollars - (Nuggets * 1.5);
+						Extra = Extra.toFixed(2);
+						Nuggets = Nuggets * 10;
+						if (Extra == 0) {
+							Output = Nuggets + " Nuggets";
+						}
+						else {
+							Output = Nuggets + " Nuggets and $" + Extra + " to spare";
+						}
+					}
+					document.getElementById("NuggetOutput").innerHTML = Output;
+				}
+			</script>
+		</div>
+		
+		<!-- jquery -->
+		<script src="http://code.jquery.com/jquery.js"/>
+		<!-- bootstrap javascript -->
+		<script src="bootstrap/js/bootstrap.js"/>
+	</body>
+</html>
